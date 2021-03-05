@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final</title>
+  <title>Movies</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
+<body class="bg-yellow-100">
+  <div class="text-center italic text-4xl font-semibold">
+    <p>Welcome to the meal selector tool! Please sign-in!</p>
+  </div>
+  <div class="sign-in-or-sign-out pt-4 px-16 text-white text-center">
+    <!-- JavaScript puts stuff here -->
+  </div>
 
-<body class='bg-yellow-100'>
-  <div class="userName text-center"></div>
-  <div class="mt-7 md:flex justify-center space-x-7"> 
-    <p class="underline italic font-bold hover:text-blue-400"><a href="index.html">Meal Selector</a></p>
-    <p class="underline italic hover:text-blue-400"><a href="addmeal.html">Create Your Own</a></p>
-  </div> 
-
-
-  <form class="w-full mt-8">
-      <input type="text" id="Ingredient1" name="Ingredient1" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-      <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add</button>
-  </form>
-  <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
-
-
-  
+ 
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <!-- Firebase Auth -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+  <!-- FirebaseUI Auth -->
+  <!-- https://firebaseopensource.com/projects/firebase/firebaseui-web/ -->
   <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
 
   <script>
@@ -40,12 +37,11 @@
     projectId: "kiei-451-e9f89",
     storageBucket: "kiei-451-e9f89.appspot.com",
     messagingSenderId: "178806834856",
-    appId: "1:178806834856:web:c5fe7cf1adfa64f17ce49d"
-  };
+    appId: "1:178806834856:web:ff682236ffe960e07ce49d"
+    };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
-  <script src="index.js"></script>
+  <script src="signin.js"></script>
 </body>
-
 </html>

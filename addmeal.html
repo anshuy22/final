@@ -10,21 +10,19 @@
 </head>
 
 <body class='bg-yellow-100'>
-  <div class="userName text-center"></div>
-  <div class="mt-7 md:flex justify-center space-x-7"> 
-    <p class="underline italic font-bold hover:text-blue-400"><a href="index.html">Meal Selector</a></p>
-    <p class="underline italic hover:text-blue-400"><a href="addmeal.html">Create Your Own</a></p>
-  </div> 
+    <div class="userName text-center"></div>
+    <div class="mt-7 md:flex justify-center space-x-7">
+        <p class="underline italic hover:text-blue-400"><a href="index.html">Meal Selector</a></p>
+        <p class="underline italic font-bold hover:text-blue-400"><a href="addmeal.html">Create Your Own</a></p>
+    </div>
+    <form class="w-full mt-8">
+        <input type="text" id="Ingredient1" name="Ingredient1" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+        <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add</button>
+      </form>
+    <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
 
 
-  <form class="w-full mt-8">
-      <input type="text" id="Ingredient1" name="Ingredient1" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
-      <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add</button>
-  </form>
-  <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
-
-
-  
+    
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
