@@ -23,14 +23,19 @@
         <form class="w-full mt-7">
             <div class="md:flex">
                 <input type="text" id="mealName" name="mealName" autofocus placeholder="Meal Name" class="my-2 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4">
-                <!-- <input type="text" id="ingredientOne" name="ingredientOne" autofocus placeholder="Ingredient 1 Name" class="my-2 ml-5 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4">
+                <input type="text" id="ingredientOne" name="ingredientOne" autofocus placeholder="Ingredient 1 Name" class="my-2 ml-5 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4">
                 <input type="text" id="ingredientTwo" name="ingredientTwo" autofocus placeholder="Ingredient 2 Name" class="my-2 ml-5 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4">
-                <input type="text" id="ingredientThree" name="ingredientThree" autofocus placeholder="Ingredient 3 Name" class="my-2 ml-5 mx-5 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4"> -->
+                <input type="text" id="ingredientThree" name="ingredientThree" autofocus placeholder="Ingredient 3 Name" class="my-2 ml-5 mx-5 p-2 w-50 border border-gray-400 rounded shadow-xl md:w-1/4">
             </div>
             <button name="toolButton" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add</button>
         </form>
     </div>
 
+    <div class="mt-60">
+      <p class="userHistory text-center text-4xl italic font-semibold"></p>
+      <p id='mealHistory' class="mt-50 text-center text-2xl font-semibold"></p>
+      <p id='myMeals' class="mt-50 text-center text-2xl font-semibold"></p>
+    </div>
 
     <!-- Sign-out Functionality -->
     <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
@@ -44,6 +49,7 @@
   <!-- Firebase Auth -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
 
   <script>
     // Your web app's Firebase configuration
@@ -58,7 +64,7 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script>
-  <script src="index.js"></script>
+  <script src="addmeal.js"></script>
 </body>
 
 </html>
