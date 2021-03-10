@@ -17,11 +17,66 @@
   </div> 
 
 
-  <form class="w-full mt-8">
+  <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
+  
+  <div class=" flex">
+    <div class="md: pt-8 m-8"> 
+      <form>
+        <select id = "myList " class="my-2 p-2 w-100 border border-green-400 rounded shadow-xl " onchange='myfunction()' >
+          <option> ---Choose Ingredient 1--- </option>
+              <option> Cauliflower </option>
+              <option> Eggplant</option>
+              <option> Peas </option>
+              <option> Beans </option>
+              
+              <option>Onions</option>
+              <option>Broccoli</option>
+              <option>Cabbage</option>
+    <!-- <p> <input type = "text" class="m-4 border rounded shadow-xl border-purple-200" id = "other" size = "20"> </p> -->
+    
+  </select>
+
+</div>
+
+  
+    <div class="md:pt-8  m-8">
+    <select id = "myList1" class="my-2 p-2 w-50 border border-green-400 rounded shadow-xl " onchange='myfunction1()'  >
+      <option> ---Choose Ingredient 2--- </option>
+      <option> Chicken </option>
+      <option> Beef</option>
+      <option> Fish</option>
+      <option> Eggs </option> 
+      <option>Shrimp</option>
+    <!-- <p> <input type = "text" class="m-4 border rounded shadow-xl border-purple-200"id = "other" size = "20"> </p> -->
+    </select>
+    </div>
+   
+
+      <div class="md:pt-8 border-green-400 m-8">
+        <select id = "myList2" class="my-2 p-2 w-50 border border-green-400 rounded shadow-xl " onchange='myfunction2()' >
+          <option> ---Choose Ingredient 3--- </option>
+          <option> Milk </option>
+          <option> Yogurt</option>
+          <option> Cheese</option>
+          <option>Coconut Milk</option>
+          <option>Bread</option>
+    <!-- <p> <input type = "text" class="m-4 border rounded shadow-xl border-purple-200" id = "other" size = "20"> </p> -->
+          
+        </select>
+          </form>
+    
+  </div>
+</div>    
+
+</div>
+
+
+
+  <!-- <form class="w-full m-8 mt-8">
       <input type="text" id="Ingredient1" name="Ingredient1" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500">
       <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Add</button>
   </form>
-  <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div>
+  <div class="sign-in-or-sign-out text-center absolute inset-x-0 bottom-0 h-16 hover:text-blue-400"></div> -->
 
 
   
