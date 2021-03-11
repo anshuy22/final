@@ -8,6 +8,7 @@ firebase.auth().onAuthStateChanged(async function (user) {
     `
     document.querySelector('.sign-in-or-sign-out').innerHTML = `
       <a href="#" class="sign-out-button text-green-500 underline">Sign Out</a>
+      
     `
     document.querySelector('.sign-out-button').addEventListener('click', function(event) {
       event.preventDefault()
@@ -20,19 +21,28 @@ firebase.auth().onAuthStateChanged(async function (user) {
       let ingredientOneName = document.querySelector('#ingredientOne').value
       let ingredientTwoName = document.querySelector('#ingredientTwo').value
       let ingredientThreeName = document.querySelector('#ingredientThree').value
+      let Recipe = document.querySelector('#Recipe').value
+      let image= document.querySelector('#image').value
       console.log(mealName)
       console.log(ingredientOneName)
       console.log(ingredientTwoName)
       console.log(ingredientThreeName)
       await db.collection('mealnames').add({
         text: mealName, 
-        text1: ingredientOneName,
-        text2: ingredientTwoName,
-        text3: ingredientThreeName, 
+        Ingredient1: ingredientOneName,
+        Ingredient2: ingredientTwoName,
+        Ingredient3: ingredientThreeName, 
+        Recipe: Recipe,
+        image: image,
         userid: user.uid
       })
-    })
-    document.querySelector('.userHistory').innerHTML = `
+  document.querySelector('#ingredientOne').value = ''
+  document.querySelector('#ingredientTwo').value = ''
+  document.querySelector('#ingredientThree').value = ''
+  document.querySelector('#Recipe').value = ''
+  document.querySelector('#image').value = '' 
+
+      document.querySelector('.userHistory').innerHTML = `
       <a href="#" >${userName}'s Past Meal Creations</a>
     `
     let history = await db.collection('mealnames').where('userid', '==', user.uid).get()
@@ -40,19 +50,25 @@ firebase.auth().onAuthStateChanged(async function (user) {
  
     document.querySelector('#mealHistory').innerHTML = `
     <a href="#" >Total Meals Added: ${history.size}</a>
+    
     `
     let myMeals = history.docs
-    for (let i=0; i<myMeals.length; i++) {
-      let mealId = myMeals[i].id 
-      let meals = myMeals[i].data()
-      let mealText = meals.text
-      document.querySelector('#myMeals').insertAdjacentHTML('beforeend', `
-      <div class="todo-${mealId} py-4 text-xl">
-        <a href="#" ></a>
-        ${mealText}
-      </div>
-    `)
-    }
+      for (let i=0; i<myMeals.length; i++) {
+        let mealId = myMeals[i].id 
+        let meals = myMeals[i].data()
+        let mealText = meals.text
+        document.querySelector('#myMeals').insertAdjacentHTML('beforeend', `
+        <div class="todo-${mealId} py-4 text-xl">
+          <a href="#" ></a>
+          ${mealText}
+        </div>
+        
+      `)
+      
+      }
+    })
+   
+   
 
 
   } else {
