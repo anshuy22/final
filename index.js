@@ -30,7 +30,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('form').addEventListener('submit', async function(event){
           event.preventDefault()
     
-  let response = await fetch(`s/.netlify/functions/get_data?userId=${user.uid}`)
+  let response = await fetch(`/.netlify/functions/get_data?userId=${user.uid}`)
   let meal = await response.json()
   console.log(meal)
 
