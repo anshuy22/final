@@ -30,7 +30,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('form').addEventListener('submit', async function(event){
           event.preventDefault()
     
-  let response = await fetch(`/.netlify/functions/get_data?userId=${user.uid}`)
+  let response = await fetch(`https://meals-app.netlify.app/.netlify/functions/get_data?userId=${user.uid}`)
   let meal = await response.json()
   console.log(meal)
 
@@ -69,7 +69,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
               
             document.querySelector(`.mealplan-${mealid}-${user.uid}`).classList.add('opacity-20')
              
-      let response = await fetch('/.netlify/functions/fav',{
+      let response = await fetch('https://meals-app.netlify.app/.netlify/functions/fav',{
         method:'POST',
         body: JSON.stringify({
               recipe: mealrecipe,
