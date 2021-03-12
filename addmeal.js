@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(async function (user) {
       console.log(ingredientTwoName)
       console.log(ingredientThreeName)
 
-      let response = await fetch('http://localhost:8888/.netlify/functions/add_meal',{
+      let response = await fetch('/.netlify/functions/add_meal',{
         method:'POST',
         body: JSON.stringify({
           text: mealName, 
