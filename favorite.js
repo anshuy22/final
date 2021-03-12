@@ -25,8 +25,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
       let favorite=await db.collection('favorites').where("uid","==",user.uid).get()
       let fav=favorite.docs
 
+      // let response = await fetch(`http://localhost:8888/.netlify/functions/fav?userId=${user.uid}`,{
+      //   method:'POST',
+      //   body: JSON.stringify({
+      //     mealId: ,
+      //     userId: user.uid
+
+      //   })
+
+      // })
+      
+
       for(let i=0; i<fav.length;i++){
-        console.log(fav[i].data())
+        console.log(fav[i].data())        
         let id=fav[i].data().id
 
         document.querySelector('.mealplan').insertAdjacentHTML('beforeend',`

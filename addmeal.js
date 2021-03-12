@@ -27,15 +27,31 @@ firebase.auth().onAuthStateChanged(async function (user) {
       console.log(ingredientOneName)
       console.log(ingredientTwoName)
       console.log(ingredientThreeName)
-      await db.collection('mealnames').add({
-        text: mealName, 
-        Ingredient1: ingredientOneName,
-        Ingredient2: ingredientTwoName,
-        Ingredient3: ingredientThreeName, 
-        Recipe: Recipe,
-        image: image,
-        userid: user.uid
+
+      let response = await fetch('http://localhost:8888/.netlify/functions/add_meal',{
+        method:'POST',
+        body: JSON.stringify({
+          text: mealName, 
+          Ingredient1: ingredientOneName,
+          Ingredient2: ingredientTwoName,
+          Ingredient3: ingredientThreeName, 
+          Recipe: Recipe,
+          image: image,
+          userid: user.uid
+
+
+        })
+
       })
+      // await db.collection('mealnames').add({
+      //   text: mealName, 
+      //   Ingredient1: ingredientOneName,
+      //   Ingredient2: ingredientTwoName,
+      //   Ingredient3: ingredientThreeName, 
+      //   Recipe: Recipe,
+      //   image: image,
+      //   userid: user.uid
+      // })
   document.querySelector('#ingredientOne').value = ''
   document.querySelector('#ingredientTwo').value = ''
   document.querySelector('#ingredientThree').value = ''

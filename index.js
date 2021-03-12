@@ -30,27 +30,29 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('form').addEventListener('submit', async function(event){
           event.preventDefault()
     
-    // let response = await fetch('http://localhost:8888/.netlify/functions/get_data')
-    // let meals = await response.json()
+  let response = await fetch(`http://localhost:8888/.netlify/functions/get_data?userId=${user.uid}`)
+  let meal = await response.json()
+  console.log(meal)
 
-       let querySnapshot=await db.collection('Meals').get() 
-       let meals= querySnapshot.docs
+      //  let querySnapshot=await db.collection('Meals').get() 
+      //  let meals= querySnapshot.docs
        let ingredient1 = document.querySelector('#myList option:checked').text
        let ingredient2 = document.querySelector('#myList1 option:checked').text
        let ingredient3 = document.querySelector('#myList2 option:checked').text
 
+       
        //let a=[]
        
-       for(let i=0;i<meals.length;i++){
+       for(let i=0;i<meal.length;i++){
          //console.log(meals[i].data().Ingredients)
-         let mealid=meals[i].data().recipeId
-          let mealimage=meals[i].data().image
-          let mealRecipe=meals[i].data().Recipe
-          let mealrecipe=meals[i].data().recipe
-         for(let j=0;j<meals[i].data().Ingredients.length;j++){
-           if(ingredient1==meals[i].data().Ingredients[j] || ingredient2==meals[i].data().Ingredients[j] || ingredient3==meals[i].data().Ingredients[j]){
-          // console.log(meals[i].Ingredients)
-          // console.log(meals[i].Recipe)
+         let mealid=meal[i].recipeId
+          let mealimage=meal[i].image
+          let mealRecipe=meal[i].Recipe
+          let mealrecipe=meal[i].recipe
+         for(let j=0;j<meal[i].Ingredients.length;j++){
+           if(ingredient1==meal[i].Ingredients[j] || ingredient2==meal[i].Ingredients[j] || ingredient3==meal[i].Ingredients[j]){
+          console.log(meal[i].Ingredients)
+          console.log(meal[i].Recipe)
         
           document.querySelector('.mealplan').insertAdjacentHTML('beforeend',`
           <div class="w-1/5 p-4 mealplan-${mealid}-${user.uid}">
@@ -66,16 +68,30 @@ firebase.auth().onAuthStateChanged(async function(user) {
             
               
             document.querySelector(`.mealplan-${mealid}-${user.uid}`).classList.add('opacity-20')
-              
-            await db.collection('favorites').doc(`${mealid}-${user.uid}`).set({
+             
+      let response = await fetch('http://localhost:8888/.netlify/functions/fav',{
+        method:'POST',
+        body: JSON.stringify({
+              recipe: mealrecipe,
+              image: mealimage,
+              Recipe: mealRecipe,
+              id:mealid,
+              userId: user.uid,
 
-              recipe: meals[i].data().recipe,
-              image: meals[i].data().image,
-              Recipe: meals[i].data().Recipe,
-              id:meals[i].data().recipeId,
-              uid: user.uid
+
+        })
+
+      })
+
+            // await db.collection('favorites').doc(`${mealid}-${user.uid}`).set({
+
+            //   recipe: meal[i].recipe,
+            //   image: meal[i].image,
+            //   Recipe: meal[i].Recipe,
+            //   id:meal[i].recipeId,
+            //   uid: user.uid
             
-            })
+            // })
 })
          } 
 
