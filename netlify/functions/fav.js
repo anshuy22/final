@@ -10,22 +10,26 @@ let favor= JSON.parse(event.body)
   let favId=favor.id 
   let favrecipe=favor.recipe
   let userid=favor.userId 
-  let favRecipe=favor.recipe
+  let favRecipe=favor.Recipe
   let mealimage=favor.image 
 
 // let querySnapshot=await db.collection('favorites')
 //                                      .where("uid","==",userid).get()
-await db.collection('favorites').doc(`${favId}-${userid}`).set({
 
-              recipe: favrecipe,
-              image: mealimage,
-              Recipe: favRecipe,
-              id:favId,
-              uid: userid
-            
-            })
-  return {
+let recipef = {
+
+  recipe: favrecipe,
+  image: mealimage,
+  Recipe: favRecipe,
+  id:favId,
+  uid: userid
+
+}
+let response=await db.collection('favorites').doc(`${favId}-${userid}`).set(recipef)
+
+console.log(response)
+return {
     statusCode: 200,
-    body: JSON.stringify({})
+    body: JSON.stringify(recipef)
   }
 }
